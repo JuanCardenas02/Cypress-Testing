@@ -92,7 +92,7 @@ describe ('Dev Vendoo form registering', () => {
 
         cy.wait(15000)
 
-        cy.contains(' The email address is already in use by another account.').should('exist')
+        cy.contains('The email address is already in use by another account.').should('exist')
 
 
     })
@@ -100,6 +100,7 @@ describe ('Dev Vendoo form registering', () => {
     it('Registering account and making sure to land on inventory after clicking Get Started', () => {
 
         //Registering the Account
+        //Generating Random String
         function GenrateRandonEmail() {
             var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -109,7 +110,7 @@ describe ('Dev Vendoo form registering', () => {
         
             return text;
           }
-          
+          //Assigning @gmail to string
           var RandomEmailSuccess = GenrateRandonEmail() + "@gmail.com"
 
 
@@ -118,6 +119,7 @@ describe ('Dev Vendoo form registering', () => {
 
         cy.wait(30000)
 
+        //Confirming Page URLs
         cy.url().should('eq', 'https://dev.vendoo.co/app/onboarding')
         cy.contains('Get Started').click()
         cy.url().should('eq', 'https://dev.vendoo.co/app')
